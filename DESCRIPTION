@@ -3,12 +3,12 @@ Type: Package
 Title: Compute an approximated private minimum spanning tree from a graph
 Version: 0.1
 Date: 2018-02-08
-Authors@R: person("Rafael", "Pinot", email = "rafael.pinot@cea.fr", role = c("aut", "cre"))
+Authors@R: person("anonymous", "anonymous", email = "anonymous.anonymous@anonymous.com", role = c("aut", "cre"))
 Description: Privacy-preserving MST computation from an arbitrary graph using PAMST method
 Depends: R (>= 3.4.1)
 License: none
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 0.12.15)
+Imports: Rcpp (>= 0.12.15), igraph
 LinkingTo: Rcpp, BH
 RoxygenNote: 6.0.1

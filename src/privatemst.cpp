@@ -106,10 +106,14 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
 
     ++counter;
   }
-  //std::cout<<"remplissage du MST ok"<<std::endl;
   return(S_E);
 }
 
+//' Compute approximate MST from an arbitrary graph
+//' @param order Number of nodes in the graph
+//' @param Elist edges list as a data.frame
+//' @param privacydegree degree of privacy
+//' @return The approximate MST using the PAMST algorithm
 // [[Rcpp::export]]
 Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacydegree){
 
