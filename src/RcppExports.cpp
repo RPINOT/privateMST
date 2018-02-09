@@ -5,27 +5,6 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _privateMST_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
-// leading_na
-LogicalVector leading_na(IntegerVector x);
-RcppExport SEXP _privateMST_leading_na(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(leading_na(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // PrivateMST
 Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacydegree);
 RcppExport SEXP _privateMST_PrivateMST(SEXP orderSEXP, SEXP ElistSEXP, SEXP privacydegreeSEXP) {
@@ -41,8 +20,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_privateMST_rcpp_hello_world", (DL_FUNC) &_privateMST_rcpp_hello_world, 0},
-    {"_privateMST_leading_na", (DL_FUNC) &_privateMST_leading_na, 1},
     {"_privateMST_PrivateMST", (DL_FUNC) &_privateMST_PrivateMST, 3},
     {NULL, NULL, 0}
 };

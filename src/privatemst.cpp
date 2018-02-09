@@ -19,16 +19,6 @@
 #include <boost/graph/kruskal_min_spanning_tree.hpp>
 using namespace Rcpp;
 
-// [[Rcpp::export]]
-List rcpp_hello_world() {
-
-    CharacterVector x = CharacterVector::create( "foo", "bar" )  ;
-    NumericVector y   = NumericVector::create( 0.0, 1.0 ) ;
-    List z            = List::create( x, y ) ;
-
-    return z ;
-}
-
 // function to transform the Data frame that R will
 // provide into a NumericMatrix for c++ to understand it
 Rcpp::NumericMatrix DFtoNM( Rcpp::DataFrame x) {
@@ -39,29 +29,6 @@ Rcpp::NumericMatrix DFtoNM( Rcpp::DataFrame x) {
   }
   return y;
 }
-
-//' Leading NA
-//'
-//' This function returns a logical vector identifying if
-//' there are leading NA, marking the leadings NA as TRUE and
-//' everything else as FALSE.
-//'
-//' @param x An integer vector
-//' @export
-// [[Rcpp::export]]
-LogicalVector leading_na(IntegerVector x) {
-  int n = x.size();
-  LogicalVector leading_na(n);
-
-  int i = 0;
-  while((i < n) &&(x[i] == NA_INTEGER)) {
-    leading_na[i] = TRUE;
-    i++;
-  }
-  return leading_na;
-}
-
-
 
 struct Nodeclass{ // define the characteristics of a node (here it has only a name)
   std::string name;
