@@ -5,22 +5,22 @@
 
 using namespace Rcpp;
 
-// PrivateMST
-Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacydegree);
-RcppExport SEXP _privateMST_PrivateMST(SEXP orderSEXP, SEXP ElistSEXP, SEXP privacydegreeSEXP) {
+// PAMST
+Rcpp::NumericMatrix PAMST(int order, Rcpp::DataFrame Elist, double privacydegree);
+RcppExport SEXP _privateMST_PAMST(SEXP orderSEXP, SEXP ElistSEXP, SEXP privacydegreeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type order(orderSEXP);
     Rcpp::traits::input_parameter< Rcpp::DataFrame >::type Elist(ElistSEXP);
     Rcpp::traits::input_parameter< double >::type privacydegree(privacydegreeSEXP);
-    rcpp_result_gen = Rcpp::wrap(PrivateMST(order, Elist, privacydegree));
+    rcpp_result_gen = Rcpp::wrap(PAMST(order, Elist, privacydegree));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_privateMST_PrivateMST", (DL_FUNC) &_privateMST_PrivateMST, 3},
+    {"_privateMST_PAMST", (DL_FUNC) &_privateMST_PAMST, 3},
     {NULL, NULL, 0}
 };
 

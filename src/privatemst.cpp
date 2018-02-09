@@ -93,7 +93,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
     }
 
     S_E(counter,0)= (double) source(e_current,g);
-    S_E(counter,1)=(double) target(e_current,g); // on force la conversion en int pour que R comprenne ce qui se passe
+    S_E(counter,1)=(double) target(e_current,g); // Forcing the double convertion
     S_E(counter,2)=(double) g[e_current].weight;// add the edge with the min noisy value to the selected edges
 
     selected_node=source(e_current, g); // select the node forming the selected edge that is not already in S_V and insert it in the set of node labeled
@@ -109,7 +109,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
   return(S_E);
 }
 
-//' Compute approximate MST from an arbitrary graph
+//' Compute approximate MST from an arbitrary graph using PAMST method
 //' @param order Number of nodes in the graph
 //' @param Elist edges list as a data.frame
 //' @param privacydegree degree of privacy
@@ -123,19 +123,21 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
 //' ## Assign random weights to the edges, using an uniform probability distribution
 //' E(graph)$weight <- runif(ecount(graph),0,10)
 //' eps <- 0.6
-//' approxMSTlaplace <- PrivateMST(n,Dataframe,epsilon)
-//' print(sum(Privatemst[,3])
+//' Dataframe=igraph::as_data_frame(graph,what="edges")
+//' PMST <- PAMST(n,Dataframe,eps)
+//' print(sum( PMST[,3] ))
 //' print(sum(E(mst(graph))$weight))
 //'
 //' ## plot the resulting MST
-//' approxMST <- igraph::from_data_frame(Privatemst,directed = FALSE)
+//' ## Be careful the ids are not allowed to be 0 !
+//' approxMST <- igraph::graph_from_edgelist(cbind(PMST[,1]+1,PMST[,2]+1),directed = FALSE)
 //' mylayout <- layout.auto(graph)
 //' par(mfrow=c(1,2))
 //' plot(graph, layout=mylayout, vertex.size=5, vertex.label=NA)
 //' plot(approxMST, layout=mylayout, vertex.size=5, vertex.label=NA)
 //'
 // [[Rcpp::export]]
-Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacydegree){
+Rcpp::NumericMatrix PAMST(int order, Rcpp::DataFrame Elist, double privacydegree){
 
   Rcpp::NumericMatrix Edgelist = DFtoNM( Elist); // transform the edgelist (dataframe type) to a
   //NumericMatrix type edgelist  for C++ to understand it
