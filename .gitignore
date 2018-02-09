@@ -8,6 +8,11 @@
 # Example code in package build process
 *-Ex.R
 
+# .dll or .so files
+*.dll
+*.so
+*.o
+
 # Output files from R CMD build
 /*.tar.gz
 
@@ -31,3 +36,10 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+.Rproj.user
+
+# custom platform-dependent src
+/src-*
+
+# local files for reference
+/local

@@ -5,3 +5,19 @@ rcpp_hello_world <- function() {
     .Call(`_privateMST_rcpp_hello_world`)
 }
 
+#' Leading NA
+#'
+#' This function returns a logical vector identifying if
+#' there are leading NA, marking the leadings NA as TRUE and
+#' everything else as FALSE.
+#'
+#' @param x An integer vector
+#' @export
+leading_na <- function(x) {
+    .Call(`_privateMST_leading_na`, x)
+}
+
+PrivateMST <- function(order, Elist, privacydegree) {
+    .Call(`_privateMST_PrivateMST`, order, Elist, privacydegree)
+}
+
