@@ -1,2 +1,2 @@
 # privateMST
-Privacy-preserving MST computation from an arbitrary graph using PAMST method
+Privacy-preserving MST computations from an arbitrary graph.

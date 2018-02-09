@@ -115,6 +115,25 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
 //' @param privacydegree degree of privacy
 //' @return The approximate MST using the PAMST algorithm
 //' @export
+//' @examples
+//' n <- 70
+//' prob <- 0.1
+//' ## Generate random Erdos-Renyi graph
+//' graph <- erdos.renyi.game(n, prob, type="gnp",directed = FALSE, loops = FALSE)
+//' ## Assign random weights to the edges, using an uniform probability distribution
+//' E(graph)$weight <- runif(ecount(graph),0,10)
+//' eps <- 0.6
+//' approxMSTlaplace <- PrivateMST(n,Dataframe,epsilon)
+//' print(sum(Privatemst[,3])
+//' print(sum(E(mst(graph))$weight))
+//'
+//' ## plot the resulting MST
+//' approxMST <- igraph::from_data_frame(Privatemst,directed = FALSE)
+//' mylayout <- layout.auto(graph)
+//' par(mfrow=c(1,2))
+//' plot(graph, layout=mylayout, vertex.size=5, vertex.label=NA)
+//' plot(approxMST, layout=mylayout, vertex.size=5, vertex.label=NA)
+//'
 // [[Rcpp::export]]
 Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacydegree){
 
@@ -141,10 +160,6 @@ Rcpp::NumericMatrix PrivateMST(int order, Rcpp::DataFrame Elist, double privacyd
       }
     }
   }
-
-  std::cout<< "Remplissage du graph OK" <<std::endl;
-  std::cout<<"-------------------------"<<std::endl;
-
 
   Rcpp::NumericMatrix mstexpmechanism=approximated_MST(g,(privacydegree*numberofedge)/(2*(numberofnode)));
   //call the c++ function to approximate the MST using prim+exponential mechanism,

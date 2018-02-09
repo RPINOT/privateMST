@@ -11,8 +11,7 @@ simlap <- function(n=1,loc=0,scale=1){
 #' @return Approximate MST using Laplace mechanism
 #' @references
 #' \insertRef{Sealfon_2016}{privateMST}
-#' @importFrom igraph mst
-#' @importFrom igraph ecount
+#' @import igraph
 #' @export
 #' @examples
 #' n <- 70
