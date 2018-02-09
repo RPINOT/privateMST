@@ -1,0 +1,14 @@
+
+@inproceedings{Sealfon_2016,
+  title = {Shortest {{Paths}} and {{Distances}} with {{Differential Privacy}}},
+  abstract = {ABSTRACTWe introduce a model for differentially private analysis ofweighted graphs in which the graph topology (V, E) is assumedto be public and the private information consistsonly of the edge weights  w : E $\rightarrow$R⁺. This can expresshiding congestion patterns in a known system of roads. Differentialprivacy requires that the output of an algorithmprovides little advantage, measured by privacy parameters $\epsilon$and $\delta$, for distinguishing between neighboring inputs, whichare thought of as inputs that differ on the contribution ofone individual. In our model, two weight functions w,w\textsuperscript{'}are considered to be neighboring if they have l₁ distance atmost one.We study the problems of privately releasing a short pathbetween a pair of vertices and of privately releasing approximatedistances between all pairs of vertices. We are concernedwith the approximation error, the difference betweenthe length of the released path or released distance and thelength of the shortest path or actual distance.For the problem of privately releasing a short path betweena pair of vertices, we prove a lower bound of $\Omega$(|V|)on the additive approximation error for fixed privacy parameters$\epsilon$ and $\delta$. We provide a differentially private algorithmthat matches this error bound up to a logarithmic factor andreleases paths between all pairs of vertices, not just a singlepair. The approximation error achieved by our algorithmcan be bounded by the number of edges on the shortest path,so we achieve better accuracy than the worst-case bound forpairs of vertices that are connected by a low-weight pathconsisting of o(|V|) vertices.For the problem of privately releasing all-pairs distances,we show that for trees we can release all-pairs distances withapproximation error O(log\textsuperscript{2.5} |V|) for fixed privacy parameters.For arbitrary bounded-weight graphs with edge weightsin [0,M] we can release all distances with approximation errorO(|V|M).},
+  booktitle = {Proceedings of the 35th {{ACM SIGMOD}}-{{SIGACT}}-{{SIGAI Symposium}} on {{Principles}} of {{Database Systems}} - {{PODS}}},
+  publisher = {{ACM Press}},
+  author = {Sealfon, Adam},
+  year = {2016},
+  keywords = {Differential Privacy,Graph,Minimum Spanning Tree,Representative Point Sets,Shotest Path},
+  adsdoi = {10.1145/2902251.2902291},
+  adsurl = {http://dl.acm.org/citation.cfm?id=2902291}
+}
+
+

@@ -6,6 +6,7 @@
 #' @param Elist edges list as a data.frame
 #' @param privacydegree degree of privacy
 #' @return The approximate MST using the PAMST algorithm
+#' @export
 PrivateMST <- function(order, Elist, privacydegree) {
     .Call(`_privateMST_PrivateMST`, order, Elist, privacydegree)
 }

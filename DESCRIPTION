@@ -9,6 +9,7 @@ Depends: R (>= 3.4.1)
 License: none
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 0.12.15), igraph
+Imports: Rcpp (>= 0.12.15), igraph, Rdpack
 LinkingTo: Rcpp, BH
 RoxygenNote: 6.0.1
+RdMacros: Rdpack
