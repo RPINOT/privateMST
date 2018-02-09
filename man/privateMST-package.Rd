@@ -3,32 +3,18 @@
 \alias{privateMST}
 \docType{package}
 \title{
-  A short title line describing what the package does
+ Two private minimum spanning tree algorithms
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+  This package provides two methods to compute an almost minimum spanning tree under differential privacy constraints.
 }
 \details{
-  This section should provide a more detailed overview of how to use the
-  package, including the most important functions.
+  The two main functions offered by the package are laplaceMST and PAMST. They respectively compute spanning trees according to the Laplace and PAMST methods.
 }
 \author{
 Your Name, email optional.
 
 Maintainer: Your Name <your@email.com>
 }
-\references{
-  This optional section can contain literature or other references for
-  background information.
-}
-\keyword{ package }
-\seealso{
-  Optional links to other man pages
-}
-\examples{
-  \dontrun{
-     ## Optional simple examples of the most important functions
-     ## These can be in \dontrun{} and \donttest{} blocks.   
-  }
-}
+\keyword{ Minimum spanning tree, differential privacy, Laplace mechanism, PAMST algorithm }
+

@@ -6,7 +6,7 @@
 \alias{privateMST-package}
 \title{privateMST}
 \description{
-Description of your package
+This package offers two functions for releasing a minimum spanning tree under privacy constraints
 }
 \author{
 you

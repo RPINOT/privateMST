@@ -1,12 +1,11 @@
 #' privateMST
 #'
-#' Description of your package
+#' This package offers two functions for releasing a minimum spanning tree under privacy constraints
 #'
 #' @docType package
 #' @author you
 #' @import Rcpp
-#' @importFrom Rcpp evalCpp
-#' @importFrom igraph mst
+#' @import igraph
 #' @importFrom Rdpack reprompt
 #' @useDynLib privateMST, .registration=TRUE
 #' @name privateMST
