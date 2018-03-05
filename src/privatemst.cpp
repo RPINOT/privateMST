@@ -87,7 +87,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
     }
 
     for ( auto current_node = S_V.begin(); current_node != S_V.end(); ++current_node){
-      if(Currentweight[*current_node]<=candidate){
+      if(Currentweight[*current_node]<=current_weight){
         e_current=CurrentEdgeVector[*current_node];
       }
     }
