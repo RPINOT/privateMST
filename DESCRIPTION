@@ -1,7 +1,8 @@
 Package: privateMST
 Type: Package
-Title: Compute an approximated private minimum spanning tree from a graph
-Version: 0.1
+Title: Compute an approximated private minimum spanning tree from a
+        graph
+Version: 0.3
 Date: 2018-02-08
 Authors@R: person("anonymous", "anonymous", email = "anonymous.anonymous@anonymous.com", role = c("aut", "cre"))
 Description: Privacy-preserving MST computation from an arbitrary graph using PAMST method
@@ -13,3 +14,7 @@ Imports: Rcpp (>= 0.12.15), igraph, Rdpack
 LinkingTo: Rcpp, BH
 RoxygenNote: 6.0.1
 RdMacros: Rdpack
+NeedsCompilation: yes
+Packaged: 2018-02-09 18:44:57 UTC; CG228481
+Author: anonymous anonymous [aut, cre]
+Maintainer: anonymous anonymous <anonymous.anonymous@anonymous.com>

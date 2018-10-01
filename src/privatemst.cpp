@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <random>
+#include <math.h>
 
 #include <boost/graph/copy.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -51,7 +52,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
 
   Rcpp::NumericMatrix S_E (N_Vertex-1, 3);
 
-  NodeID start = 0;
+  NodeID start = 5;
   std::unordered_set<NodeID> S_V ;
   S_V.insert(start);
 
@@ -59,8 +60,9 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
   NodeID selected_node=start;
   EdgeID e_current;
 
-  std::default_random_engine generator;
-  std::exponential_distribution<double> rexp(privacy_parameter);
+  std::default_random_engine generator{static_cast<long unsigned int>(time(0))};
+  std::uniform_real_distribution<double> distribution(0.0,1.0);
+
 
   std::vector<EdgeID> CurrentEdgeVector(N_Vertex);
   std::vector<double> Currentweight(N_Vertex);
@@ -75,7 +77,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
       for (boost::tie(e, e_end) = out_edges(*current_node, g); e != e_end; ++e){ // for every edge that is incident to this node
 
         if( S_V.find(target(*e,g)) == S_V.end()  ){ // verification that the edge is not between to nodes of S_V
-          candidate= g[*e].weight - rexp(generator); // computing the noisy weight of the candidate
+          candidate= g[*e].weight - log(1- distribution(generator))/privacy_parameter; // computing the noisy weight of the candidate
           if(candidate <= current_weight){// if the weight is better than the current better one, change places
             CurrentEdgeVector[*current_node]=*e;
             Currentweight[*current_node]=candidate;
@@ -116,7 +118,7 @@ Rcpp::NumericMatrix approximated_MST(Graph const& g,double const& privacy_parame
 //' @return The approximate MST using the PAMST algorithm
 //' @export
 //' @examples
-//' n <- 70
+//' n <- 60
 //' prob <- 0.1
 //' ## Generate random Erdos-Renyi graph
 //' graph <- erdos.renyi.game(n, prob, type="gnp",directed = FALSE, loops = FALSE)
@@ -163,7 +165,7 @@ Rcpp::NumericMatrix PAMST(int order, Rcpp::DataFrame Elist, double privacydegree
     }
   }
 
-  Rcpp::NumericMatrix mstexpmechanism=approximated_MST(g,(privacydegree*numberofedge)/(2*(numberofnode)));
+  Rcpp::NumericMatrix mstexpmechanism=approximated_MST(g,privacydegree/(4*(numberofnode)));
   //call the c++ function to approximate the MST using prim+exponential mechanism,
   //the privacy parameter here is the parameter that the exponential distribution
   //will use therefore it is epsilon'/2*delta_u (remeber that we use epsilon'=epsilon/(Nmber of nodes-1))
