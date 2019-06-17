@@ -5,22 +5,23 @@
 
 using namespace Rcpp;
 
-// PAMST
-Rcpp::NumericMatrix PAMST(int order, Rcpp::DataFrame Elist, double privacydegree);
-RcppExport SEXP _privateMST_PAMST(SEXP orderSEXP, SEXP ElistSEXP, SEXP privacydegreeSEXP) {
+// PrivateSpanningTree
+Rcpp::NumericMatrix PrivateSpanningTree(int order, Rcpp::DataFrame Elist, double privacydegree, bool usePAMST);
+RcppExport SEXP _privateMST_PrivateSpanningTree(SEXP orderSEXP, SEXP ElistSEXP, SEXP privacydegreeSEXP, SEXP usePAMSTSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type order(orderSEXP);
     Rcpp::traits::input_parameter< Rcpp::DataFrame >::type Elist(ElistSEXP);
     Rcpp::traits::input_parameter< double >::type privacydegree(privacydegreeSEXP);
-    rcpp_result_gen = Rcpp::wrap(PAMST(order, Elist, privacydegree));
+    Rcpp::traits::input_parameter< bool >::type usePAMST(usePAMSTSEXP);
+    rcpp_result_gen = Rcpp::wrap(PrivateSpanningTree(order, Elist, privacydegree, usePAMST));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_privateMST_PAMST", (DL_FUNC) &_privateMST_PAMST, 3},
+    {"_privateMST_PrivateSpanningTree", (DL_FUNC) &_privateMST_PrivateSpanningTree, 4},
     {NULL, NULL, 0}
 };
 

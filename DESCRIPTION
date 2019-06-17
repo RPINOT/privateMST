@@ -2,10 +2,10 @@ Package: privateMST
 Type: Package
 Title: Compute an approximated private minimum spanning tree from a
         graph
-Version: 0.3
+Version: 2.1
 Date: 2018-02-08
 Authors@R: person("anonymous", "anonymous", email = "anonymous.anonymous@anonymous.com", role = c("aut", "cre"))
-Description: Privacy-preserving MST computation from an arbitrary graph using PAMST method
+Description: Privacy-preserving MST computation from an arbitrary graph using either PAMST or Kruskal method
 Depends: R (>= 3.2.1)
 License: none
 Encoding: UTF-8

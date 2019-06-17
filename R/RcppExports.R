@@ -8,7 +8,7 @@
 #' @return The approximate MST using the PAMST algorithm
 #' @export
 #' @examples
-#' n <- 70
+#' n <- 60
 #' prob <- 0.1
 #' ## Generate random Erdos-Renyi graph
 #' graph <- erdos.renyi.game(n, prob, type="gnp",directed = FALSE, loops = FALSE)
@@ -16,7 +16,7 @@
 #' E(graph)$weight <- runif(ecount(graph),0,10)
 #' eps <- 0.6
 #' Dataframe=igraph::as_data_frame(graph,what="edges")
-#' PMST <- PAMST(n,Dataframe,eps)
+#' PMST <- PrivateSpanningTree(n,Dataframe,eps,TRUE)
 #' print(sum( PMST[,3] ))
 #' print(sum(E(mst(graph))$weight))
 #'
@@ -28,7 +28,7 @@
 #' plot(graph, layout=mylayout, vertex.size=5, vertex.label=NA)
 #' plot(approxMST, layout=mylayout, vertex.size=5, vertex.label=NA)
 #'
-PAMST <- function(order, Elist, privacydegree) {
-    .Call(`_privateMST_PAMST`, order, Elist, privacydegree)
+PrivateSpanningTree <- function(order, Elist, privacydegree, usePAMST) {
+    .Call(`_privateMST_PrivateSpanningTree`, order, Elist, privacydegree, usePAMST)
 }
 

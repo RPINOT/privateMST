@@ -3,7 +3,6 @@ simlap <- function(n=1,loc=0,scale=1){
   return(loc-scale*(log(2*u)*(u<1/2)-log(2*(1-u))*(u>1/2)))
 }
 
-
 #' Compute a private MST using the Laplace mechanism
 #'
 #' @param graph igraph graph object from which a private Minimum Spanning Tree should be computed
@@ -31,6 +30,7 @@ simlap <- function(n=1,loc=0,scale=1){
 #' plot(graph, layout=mylayout, vertex.size=5, vertex.label=NA)
 #' plot(approxMSTlaplace, layout=mylayout, vertex.size=5, vertex.label=NA)
 #'
+
 laplaceMST <- function(graph, epsilon) {
   aux <- graph
   E(aux)$weight <- E(aux)$weight + simlap(ecount(aux),scale=1/epsilon)
